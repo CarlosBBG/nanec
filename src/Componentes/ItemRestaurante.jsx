@@ -1,7 +1,20 @@
+import axios from 'axios';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ItemRestaurante =  ({id, nombre, tipo, horario, imagen}) => {
+
+    const handleEliminarRestaurante = (e) => {
+        e.preventDefault();
+
+        axios.delete(`http://localhost:3001/restaurantes/${id}`)
+        .then((response) => {
+            console.log(response.data);
+        })
+        .catch((error) => {
+            console.error("Error al obtener el restaurante:", error);
+        });
+    };
     
         //const{nombre, tipo, horario, imagen}=props;
         return (
@@ -11,6 +24,7 @@ const ItemRestaurante =  ({id, nombre, tipo, horario, imagen}) => {
                 <p>{"Horario: " + horario}</p>
                 <img src={imagen} alt="" />
                 <Link to={`/restaurantes/${id}`}>Detalle</Link>
+                <button onClick={handleEliminarRestaurante}>Eliminar</button>
             </div>
         );
 }

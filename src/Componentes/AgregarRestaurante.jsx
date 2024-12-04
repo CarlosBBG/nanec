@@ -1,6 +1,7 @@
 
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AgregarRestaurante = (props) => {
 
@@ -13,6 +14,8 @@ const AgregarRestaurante = (props) => {
     })
 
     const {onAgregarRestaurante} = props;
+
+    const navigate = useNavigate();
 
 
     const handleAgregarRestaurante = (e) => {
@@ -27,11 +30,13 @@ const AgregarRestaurante = (props) => {
         axios.post("http://localhost:3001/restaurantes", datosFormRestaurante)
             .then(res => {
                 console.log("Insercion existosa", res);
-                onAgregarRestaurante(datosFormRestaurante);
+                navigate("/");
+                //onAgregarRestaurante(datosFormRestaurante);
+                
             })
             .catch(err => {
                 console.log("Insercion fallida", err);
-                alert("No se pudo editar el restaurante");
+                alert("No se pudo agregar el restaurante");
             });
     }
 
