@@ -4,7 +4,7 @@
       "id": "1",
       "nombre": "Restaurante El Buen Sabor",
       "tipo": "Tradicional",
-      "horario": "12:00 - 22:30",
+      "horario": "12:00 - 22:00",
       "imagen": ""
     },
     {
@@ -27,20 +27,6 @@
       "tipo": "Tipo",
       "horario": "08:00 - 10:00",
       "imagen": ""
-    },
-    {
-      "id": "1",
-      "nombre": "1",
-      "tipo": "1",
-      "horario": "1",
-      "imagen": "1"
-    },
-    {
-      "id": "1",
-      "nombre": "1",
-      "tipo": "1",
-      "horario": "1",
-      "imagen": "1"
     }
   ]
 }

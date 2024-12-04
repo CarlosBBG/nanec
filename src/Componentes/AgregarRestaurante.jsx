@@ -29,7 +29,10 @@ const AgregarRestaurante = (props) => {
                 console.log("Insercion existosa", res);
                 onAgregarRestaurante(datosFormRestaurante);
             })
-            .catch(err => {console.log("Insercion fallida", err)});
+            .catch(err => {
+                console.log("Insercion fallida", err);
+                alert("No se pudo editar el restaurante");
+            });
     }
 
 
