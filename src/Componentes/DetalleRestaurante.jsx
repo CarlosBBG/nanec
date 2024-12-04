@@ -1,0 +1,33 @@
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+
+const DetalleRestaurante = () => {
+    const [restaurante, setRestaurante] = useState({});
+    const { id } = useParams();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        axios.get(`http://localhost:3001/restaurantes/${id}`)
+            .then((response) => {
+                setRestaurante(response.data);
+            })
+            .catch((error) => {
+                console.error("Error al obtener los detalles del restaurante:", error);
+            });
+    }, [id]);
+
+    const { nombre, tipo, horario, imagen } = restaurante;
+
+    return (
+        <div>
+            <h3>{nombre}</h3>
+            <p>{`Tipo de comida: ${tipo}`}</p>
+            <p>{`Horario: ${horario}`}</p>
+            {imagen && <img src={imagen} alt={nombre} />}
+            <button onClick={() => navigate(`/editar/${id}`)}>Editar</button>
+        </div>
+    );
+};
+
+export default DetalleRestaurante;
