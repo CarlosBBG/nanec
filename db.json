@@ -4,7 +4,7 @@
       "id": "1",
       "nombre": "Restaurante El Buen Sabor",
       "tipo": "Tradicional",
-      "horario": "12:00 - 22:00",
+      "horario": "12:00-22:00",
       "imagen": ""
     },
     {
@@ -19,13 +19,6 @@
       "nombre": "La Parrilla de San José",
       "tipo": "Parrillada",
       "horario": "12:00 - 17:00",
-      "imagen": ""
-    },
-    {
-      "id": "4",
-      "nombre": "Nuevo",
-      "tipo": "Tipo",
-      "horario": "08:00 - 10:00",
       "imagen": ""
     }
   ]
