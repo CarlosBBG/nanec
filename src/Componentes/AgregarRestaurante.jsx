@@ -10,7 +10,8 @@ const AgregarRestaurante = (props) => {
         nombre: "",
         tipo: "",
         horario: "",
-        imagen: ""
+        imagen: "",
+        reputacion: ""
     })
 
     const {onAgregarRestaurante} = props;
@@ -27,7 +28,7 @@ const AgregarRestaurante = (props) => {
 
     const handleSubmitRestaurante = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:3001/restaurantes", datosFormRestaurante)
+        axios.post("http://localhost:8000/restaurantes", datosFormRestaurante)
             .then(res => {
                 console.log("Insercion existosa", res);
                 navigate("/");
@@ -62,6 +63,11 @@ const AgregarRestaurante = (props) => {
                 <div>
                     <label>Imagen: </label>
                     <input type="text" id="imagen" name="imagen" value={datosFormRestaurante.imagen} onChange={handleAgregarRestaurante}/>
+                </div>
+
+                <div>
+                    <label>Reputación: </label>
+                    <input type="text" id="reputacion" name="reputacion" value={datosFormRestaurante.reputacion} onChange={handleAgregarRestaurante}/>
                 </div>
                 <button>Agregar</button>
             </form>
