@@ -34,7 +34,7 @@ function App() {
 
   // Función para cargar la lista de restaurantes
   const cargarRestaurantes = () => {
-    axios.get("http://localhost:3001/restaurantes")
+    axios.get("http://localhost:8000/restaurantes")
       .then((response) => {
         setRestaurantes(response.data);
       })

@@ -7,9 +7,11 @@ function ListaRestaurantes({ restaurantes, onRecargar }) {
 
   const navigate = useNavigate();
 
+  // Cargar restaurantes cuando se monte el componente
   useEffect(() => {
     onRecargar();
   }, [onRecargar]);
+
 
   return (
     <div>
@@ -18,7 +20,7 @@ function ListaRestaurantes({ restaurantes, onRecargar }) {
       {restaurantes.map((rest, index) => (
         <ItemRestaurante 
           key={index}
-          id={rest.id}
+          id={rest._id}
           nombre={rest.nombre}
           tipo={rest.tipo}
           horario={rest.horario}

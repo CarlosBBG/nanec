@@ -33,7 +33,7 @@ const EditarRestaurante = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.put(`http://localhost:3001/restaurantes/${id}`, restaurante)
+        axios.put(`http://localhost:8000/restaurantes/${id}`, restaurante)
             .then(() => {
                 navigate("/");
             })
