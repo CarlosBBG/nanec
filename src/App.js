@@ -7,6 +7,8 @@ import ListaRestaurantes from './Componentes/ListaRestaurantes';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import DetalleRestaurante from './Componentes/DetalleRestaurante';
 import EditarRestaurante from './Componentes/EditarRestaurante';
+import Login from './Componentes/Login';
+import Register from './Componentes/Register';
 
 //Codigo Principal
 function App() {
@@ -75,6 +77,8 @@ function App() {
         <button onClick={cargarRestaurante}>Cargar</button>*/}
       <BrowserRouter>
         <Routes>
+          <Route path='/login' element={<Login/>} />
+          <Route path='/register' element={<Register/>} />
           <Route path='/' element={<ListaRestaurantes restaurantes={restaurantes} onRecargar={cargarRestaurantes}></ListaRestaurantes>}></Route>
           <Route path='/Form' element={<AgregarRestaurante />} />
           <Route path='/restaurantes/:id' element={<DetalleRestaurante />} />
