@@ -28,7 +28,17 @@ const AgregarRestaurante = (props) => {
 
     const handleSubmitRestaurante = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:8000/restaurantes", datosFormRestaurante)
+        const token = localStorage.getItem('token');
+        if (!token) {
+            console.log('No token found, please login first');
+            //Aquí podrían cambiar una variable de estado de tipo error
+            return;
+        }
+        axios.post("http://localhost:8000/restaurantes", datosFormRestaurante, {
+            headers:{
+              Authorization: `Bearer ${token}`
+            }
+          })
             .then(res => {
                 console.log("Insercion existosa", res);
                 navigate("/");
@@ -36,7 +46,7 @@ const AgregarRestaurante = (props) => {
                 
             })
             .catch(err => {
-                console.log("Insercion fallida", err);
+                console.log("Insercion fallida", datosFormRestaurante);
                 alert("No se pudo agregar el restaurante");
             });
     }

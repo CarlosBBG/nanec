@@ -6,8 +6,14 @@ const ItemRestaurante =  ({id, nombre, tipo, horario, imagen}) => {
 
     const handleEliminarRestaurante = (e) => {
         e.preventDefault();
+        const token = localStorage.getItem('token');
+        if (!token) {
+            console.log('No token found, please login first');
+            //Aquí podrían cambiar una variable de estado de tipo error
+            return;
+        }
 
-        axios.delete(`http://localhost:8000/restaurantes/${id}`)
+        axios.delete(`http://localhost:8000/restaurantes/${id}`, )
         .then((response) => {
             console.log(response.data);
         })

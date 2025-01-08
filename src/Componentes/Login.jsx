@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = (e) => {
+    const navigate = useNavigate();
+
+    /*const handleSubmit = (e) => {
         e.preventDefault();
 
         axios.post('http://localhost:8000/login', {
@@ -22,6 +25,18 @@ const Login = () => {
         .catch(error => {
             alert('Credenciales incorrectas. Por favor, intente de nuevo.', error.message);
         });
+    };*/
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            const response = await axios.post('http://localhost:8000/login', { email, password });
+            const token = response.data.token;
+            localStorage.setItem('token', token); // Almacenar el token en localStorage
+            navigate('/'); // Redirigir a la página de usuarios
+        } catch (error) {
+            console.error('Error logging in', error);
+        }
     };
 
     return (
