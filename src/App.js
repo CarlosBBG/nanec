@@ -36,8 +36,19 @@ function App() {
 
   // Función para cargar la lista de restaurantes
   const cargarRestaurantes = () => {
-    axios.get("http://localhost:8000/restaurantes")
-      .then((response) => {
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.log('No token found, please login first');
+      //Aquí podrían cambiar una variable de estado de tipo error
+      return;
+    }
+    axios.get("http://localhost:8000/restaurantes", {
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then((response) => {
         setRestaurantes(response.data);
       })
       .catch((error) => {
@@ -49,7 +60,7 @@ function App() {
   // Cargar restaurantes cuando se monte el componente
   useEffect(() => {
     cargarRestaurantes();
-  }, []);
+  }, [restaurantes.id]);
 
 
 
